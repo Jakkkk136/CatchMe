@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d134611e76d745e098e961fb581c0ad2, type: 3}
+  m_Name: FallItem_SO
+  m_EditorClassIdentifier: Assembly-CSharp:_Scripts:FallItemSO
+  playerVelocity: 3
+  minDragOfFallingObject: 0
+  maxDragOfFallingObject: 2
+  itemsToCatch: 1
+  currentLevel: 1
+  extraItemWhenPassLevels: 2
+  itemPrefabs:
+  - {fileID: 1430082640399165602, guid: 8fcc36cc74a3c8c4a95a6195806c6b0e, type: 3}
+  - {fileID: 4384813904706636856, guid: 5bd1f617828f92344837067d4e234940, type: 3}
+  - {fileID: 6320094585388967835, guid: 75268f52b4fd8254b91b6de72fdbee71, type: 3}
