@@ -20,6 +20,7 @@ public class Plate : MonoBehaviour
 
     private Rigidbody rb;
     private float speed;
+    private Camera mainCamera;
 
     [Header("Set In Inspector")] public Joystick joystick;
     
@@ -39,6 +40,7 @@ public class Plate : MonoBehaviour
     private void Start()
     {
         speed = FallItemSO.S.playerVelocity;
+        mainCamera = Camera.main;
     }
 
     private void Update()
@@ -52,9 +54,9 @@ public class Plate : MonoBehaviour
         rb.velocity = vel * speed;
 
 
-        Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+        Vector3 pos = mainCamera.WorldToViewportPoint(transform.position);
         pos.x = Mathf.Clamp(pos.x, 0.1f, 0.9f);
-        transform.position = Camera.main.ViewportToWorldPoint(pos);
+        transform.position = mainCamera.ViewportToWorldPoint(pos);
     }
 
 
