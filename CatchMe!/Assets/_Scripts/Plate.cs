@@ -34,7 +34,7 @@ public class Plate : MonoBehaviour
 
     private void Awake()
     {
-        joystick.HandleRange = 0.2f;
+        joystick.DeadZone = 0.001f;
         rb = GetComponent<Rigidbody>();
         UIManager.onPlayerPassive += ChangeStateToPassive;
     }

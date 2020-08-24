@@ -23,7 +23,7 @@ namespace _Scripts
 
         private void ChooseRandomDrag()
         {
-            rb.drag = Random.Range(fiSO.maxDragOfFallingObject, fiSO.maxDragOfFallingObject);
+            rb.drag = Random.Range(fiSO.minDragOfFallingObject, fiSO.maxDragOfFallingObject);
         }
     }
 }
