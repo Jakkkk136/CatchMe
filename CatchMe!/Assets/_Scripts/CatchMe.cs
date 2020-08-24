@@ -12,10 +12,12 @@ public class CatchMe : MonoBehaviour
     public delegate void OnLevelBeated(int currentLevel, int collectedItems);
     public static event OnLevelBeated onLevelBeated;
 
+    [Header("Set in Inspector")] public FallItemSO fiSO;
+
     private void Awake()
     {
-        SetupLevel();
         Plate.onItemFall += CheckWinCondition;
+        SetupLevel();
     }
 
     private void Start()
@@ -25,8 +27,7 @@ public class CatchMe : MonoBehaviour
 
     public void SetupLevel()
     {
-        if (FallItemSO.S.currentLevel % FallItemSO.S.extraItemWhenPassLevels == 0) FallItemSO.S.ItemsToCatch++;
-
+        if (fiSO.currentLevel % fiSO.extraItemWhenPassLevels == 0) fiSO.ItemsToCatch++;
     }
 
     IEnumerator SpawnRoutine()
@@ -34,7 +35,7 @@ public class CatchMe : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(3);
-            Instantiate(FallItemSO.S.GetItemPrefab(), GetRandomPositionForItem(), Quaternion.identity);
+            Instantiate(fiSO.GetItemPrefab(), GetRandomPositionForItem(), Quaternion.identity);
         }
     }
     
@@ -53,10 +54,10 @@ public class CatchMe : MonoBehaviour
 
     public void CheckWinCondition(int itemsCaught)
     {
-        if (itemsCaught >= FallItemSO.S.ItemsToCatch)
+        if (itemsCaught >= fiSO.ItemsToCatch)
         {
-            onLevelBeated?.Invoke(FallItemSO.S.currentLevel, itemsCaught);
-            FallItemSO.S.currentLevel++;
+            onLevelBeated?.Invoke(fiSO.currentLevel, itemsCaught);
+           fiSO.currentLevel++;
         }
     }
 

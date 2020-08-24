@@ -140,3 +140,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 64028bff700e223459a3e2e6da163c5a, type: 3}
+  fiSO: {fileID: 11400000, guid: 1963ee2e2f4729c449c17ff0407b58c7, type: 2}

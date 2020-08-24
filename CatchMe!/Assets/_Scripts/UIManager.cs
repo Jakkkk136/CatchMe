@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     [Header("Set In Inspector")]
     public GameObject Canvas;
     public GameObject endLevelPanel;
+    public FallItemSO fiSO;
     public Text levelText;
     public Text caughtItemsText;
     public GameObject UIIconPrefab;
@@ -17,29 +18,31 @@ public class UIManager : MonoBehaviour
     public List<Image> spritesImg = new List<Image>();
     public List<Image> BGImages = new List<Image>();
     public List<GameObject> UIIconsClearPrefabs = new List<GameObject>();
-    
+
     //Number of caught items to control witch icon on UI is now need to change
     private int iconsCount = 0;
 
     //When level ends set the plate(Player) to inactive state
     public delegate void OnPlayerIsPassive();
     public static event OnPlayerIsPassive onPlayerPassive;
-
+    
+    
     private void Awake()
     {
-       Plate.onItemFallType += UpdateUI;
+        Plate.onItemFallType += UpdateUI;
        CatchMe.onLevelBeated += LevelBeatedUI;
 
     }
 
     private void Start()
     {
-        for (int i = 0; i < FallItemSO.S.ItemsToCatch; i++)
+        for (int i = 0; i < fiSO.ItemsToCatch; i++)
         {
             UIIconsClearPrefabs.Add(UIIconPrefab);
         }
+        
         DisplayClearIcons();
-        levelText.text = "Level: " + FallItemSO.S.currentLevel;
+        levelText.text = "Level: " + fiSO.currentLevel;
     }
 
     public void DisplayClearIcons()
@@ -72,6 +75,7 @@ public class UIManager : MonoBehaviour
         caughtItemsText.text = "Caught Items: " + caughtItems;
     }
 
+    
     public void NextLevelButtonPressed()
     {
         SceneManager.LoadScene(0);
@@ -79,7 +83,7 @@ public class UIManager : MonoBehaviour
 
     public void ResetProgressButtonIsPressed()
     {
-        FallItemSO.S.ResetProgress();
+        fiSO.ResetProgress();
     }
     
     private void OnDisable()

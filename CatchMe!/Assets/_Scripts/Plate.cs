@@ -22,7 +22,9 @@ public class Plate : MonoBehaviour
     private float speed;
     private Camera mainCamera;
 
-    [Header("Set In Inspector")] public Joystick joystick;
+    [Header("Set In Inspector")] 
+    public Joystick joystick;
+    public FallItemSO fiSO;
     
     [Header("Set Dynamically")]
     [Tooltip("Number of items caught on level")]
@@ -39,7 +41,7 @@ public class Plate : MonoBehaviour
 
     private void Start()
     {
-        speed = FallItemSO.S.playerVelocity;
+        speed = fiSO.playerVelocity;
         mainCamera = Camera.main;
     }
 

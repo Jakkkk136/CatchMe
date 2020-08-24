@@ -9,13 +9,6 @@ namespace _Scripts
     [CreateAssetMenu(fileName = "Fall Item", menuName = "Scriptable Objects/Fall Item", order = 0)]
     public class FallItemSO : ScriptableObject
     {
-        public static FallItemSO S;
-
-        public FallItemSO()
-        {
-            S = this;
-        }
-
         private void OnEnable()
         {
             DontDestroyOnLoad(this);
